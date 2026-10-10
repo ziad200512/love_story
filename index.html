@@ -11,6 +11,7 @@
             text-align: center;
             padding: 20px;
             color: #333;
+            margin: 0;
         }
         .card {
             background: white;
@@ -18,10 +19,10 @@
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             max-width: 400px;
-            margin: auto;
+            margin: 40px auto;
         }
         .hidden {
-            display: none;
+            display: none !important;
         }
         input {
             padding: 10px;
@@ -30,6 +31,7 @@
             width: 80%;
             margin-bottom: 10px;
             text-align: center;
+            font-size: 16px;
         }
         button {
             padding: 10px 20px;
@@ -39,9 +41,6 @@
             border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
-        }
-        button:hover {
-            background-color: #ff758f;
         }
         p {
             font-size: 18px;
@@ -71,9 +70,8 @@
     <div class="card hidden" id="mainContent">
         <h2>حبيبتي ❤️</h2>
         <div class="content">
-            <p>بقا بس قبل اي حاجه عايز تعرفي اني بحبك وربنا يخليكي ليا يقلبي يلا بقا انبسطي</p>
+            <p>قبل أي حاجة، عايز تعرفي إني بحبك وربنا يخليكي ليا يا قلبي يلا انبسطي.</p>
             <p><strong>سوا من: 16.01.2023</strong></p>
-            <p id="counter" style="color: #d9534f; font-weight: bold;"></p>
             <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
             <p>صورنا الذكريات ✨</p>
             <img src="https://i.ibb.co/fVHTOJ4g/IMG-20260215-WA0008.jpg" alt="صورة 1">
@@ -81,26 +79,14 @@
         </div>
     </div>
 
-    <audio id="bgMusic" loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-    </audio>
-
     <script>
         function checkPassword() {
-            let passInput = document.getElementById('passInput');
-            if (!passInput) return;
-            
-            let pass = passInput.value.trim().toLowerCase();
-            
-            if (pass === 'love') {
+            let passInput = document.getElementById('passInput').value.trim().toLowerCase();
+            if (passInput === 'love') {
                 document.getElementById('lockScreen').classList.add('hidden');
                 document.getElementById('mainContent').classList.remove('hidden');
-                let music = document.getElementById('bgMusic');
-                if (music) {
-                    music.play().catch(e => console.log("الموسيقى تحتاج تفاعل للتشغيل"));
-                }
             } else {
-                document.getElementById('errorMsg').innerText = "كلمة السر غلط يا قلبي، جربي تكتبيها كدة: love";
+                document.getElementById('errorMsg').innerText = "كلمة السر غلط يا قلبي، اكتبي love";
             }
         }
     </script>
