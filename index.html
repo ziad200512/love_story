@@ -3,49 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Everything ❤️</title>
+    <title>قصتنا ❤️</title>
     <style>
         body {
-            background-color: #f7f1eb;
-            font-family: 'Tahoma', sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6;
             text-align: center;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-y: auto;
+            padding: 20px;
+            color: #333;
         }
         .card {
             background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            width: 90%;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             max-width: 400px;
-            margin: 20px 0;
+            margin: auto;
+        }
+        .hidden {
+            display: none;
         }
         input {
             padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
             width: 80%;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            margin: 15px 0;
+            margin-bottom: 10px;
             text-align: center;
-            font-size: 16px;
         }
         button {
-            background-color: #d9534f;
-            color: white;
-            border: none;
             padding: 10px 20px;
-            border-radius: 10px;
+            border: none;
+            background-color: #ff4d6d;
+            color: white;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
         }
-        .hidden { display: none; }
-        .content { font-size: 18px; color: #333; line-height: 1.8; }
+        button:hover {
+            background-color: #ff758f;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.8;
+        }
         img {
             width: 100%;
             border-radius: 15px;
@@ -55,40 +57,53 @@
 </head>
 <body>
 
+    <!-- شاشة القفل -->
     <div class="card" id="lockScreen">
-        <h2>🔒 افتحي الهدية</h2>
-        <p>اكتبي كلمة السر عشان تفتحي الرسالة</p>
+        <h2>افتح الهدية ❤️</h2>
+        <p>اكتبي كلمة السر عشان تدخلي</p>
         <input type="password" id="passInput" placeholder="كلمة السر...">
         <br>
         <button onclick="checkPassword()">فتح الهدية ❤️</button>
-        <p id="errorMsg" style="color: red; font-size: 14px;"></p>
+        <p id="errorMsg" style="color: red; font-size: 14px; margin-top: 10px;"></p>
     </div>
 
+    <!-- المحتوى الرئيسي -->
     <div class="card hidden" id="mainContent">
         <h2>حبيبتي ❤️</h2>
         <div class="content">
-            <p>حبيت اعمل هدية جديدة وعايزين نملأ صورنا بقا بس قبل اي حاجه عايز تعرفي اني بحبك ورَبنا يخليكي ليا يقلبي يلا بقا انبهري 😂❤️</p>
+            <p>بقا بس قبل اي حاجه عايز تعرفي اني بحبك وربنا يخليكي ليا يقلبي يلا بقا انبسطي</p>
             <p><strong>سوا من: 16.01.2023</strong></p>
             <p id="counter" style="color: #d9534f; font-weight: bold;"></p>
-            
             <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-            
             <p>صورنا الذكريات ✨</p>
-            <img src="https://i.ibb.co/fVHT0J4g/IMG-20260215-WA0008.jpg" alt="صورة 1">
+            <img src="https://i.ibb.co/fVHTOJ4g/IMG-20260215-WA0008.jpg" alt="صورة 1">
             <img src="https://i.ibb.co/jZPPc3bt/IMG-20250611-WA0062.jpg" alt="صورة 2">
         </div>
     </div>
 
     <audio id="bgMusic" loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
     </audio>
 
     <script>
         function checkPassword() {
-            let pass = document.getElementById('passInput').value;
-            if(pass === 'love') {
+            let passInput = document.getElementById('passInput');
+            if (!passInput) return;
+            
+            let pass = passInput.value.trim().toLowerCase();
+            
+            if (pass === 'love') {
                 document.getElementById('lockScreen').classList.add('hidden');
                 document.getElementById('mainContent').classList.remove('hidden');
-                document.getElementById('bgMusic').play();
+                let music = document.getElementById('bgMusic');
+                if (music) {
+                    music.play().catch(e => console.log("الموسيقى تحتاج تفاعل للتشغيل"));
+                }
             } else {
-                document.getElementById('errorMsg').innerText = 'كلمة السر غلط،
+                document.getElementById('errorMsg').innerText = "كلمة السر غلط يا قلبي، جربي تكتبيها كدة: love";
+            }
+        }
+    </script>
+
+</body>
+</html>
